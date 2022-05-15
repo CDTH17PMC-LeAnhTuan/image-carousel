@@ -24,7 +24,8 @@ const callAPI = (method, url) => {
     method: method,
   });
 };
-const processData = async () => {
+
+const processDataImages = async () => {
   try {
     const response = await callAPI(
       "GET",
@@ -36,7 +37,7 @@ const processData = async () => {
   }
 };
 
-processData().then((response) => {
+processDataImages().then((response) => {
   const images = {
     response,
   };
@@ -53,16 +54,18 @@ processData().then((response) => {
 });
 
 const handleNextPrevImages = (response) => {
+  // get all dots
   const dots = containerDots.querySelectorAll("*").forEach((dot, index) => {
     dot.addEventListener("click", () => {
       moveDot(index + 1);
     });
   });
-
+  // set dot
   const moveDot = (index) => {
     slideIndex = index;
     updateImage();
   };
+
   // Next Images
   const nextSlide = () => {
     if (slideIndex !== response.length) {
@@ -86,6 +89,7 @@ const handleNextPrevImages = (response) => {
   };
   const prevBtn = document.querySelector(".prev");
   prevBtn.onclick = prevSlide;
+
   // Update Image when slick next or prev
   const updateImage = () => {
     const activeSlide = slides.querySelector("[data-active]");
@@ -96,5 +100,22 @@ const handleNextPrevImages = (response) => {
     containerDots.children[slideIndex - 1].dataset.active = true;
     activeDot && delete activeDot.dataset.active;
   };
+  // call first then set active class
   updateImage();
 };
+
+const processDataAuthor = async () => {
+  try {
+    const response = await callAPI(
+      "GET",
+      "https://jsonplaceholder.typicode.com/users"
+    );
+    return response;
+  } catch (err) {
+    return err;
+  }
+};
+
+processDataAuthor().then((response) => {
+  console.log(response);
+});
