@@ -2,6 +2,7 @@ const slides = document.querySelector(".slides");
 const loader = document.querySelector(".lds-ellipsis");
 const container = document.querySelector(".container-slider");
 const containerDots = document.querySelector(".container-dots");
+const $_containerDots = $(".container-dots");
 
 // init slides
 let slideIndex = 1;
@@ -41,14 +42,13 @@ processDataImages().then((response) => {
   const images = {
     response,
   };
-  let source = document.getElementById("image-template").innerHTML;
+  let source = $("#image-template").html();
   let template = Handlebars.compile(source);
   let html = template(images);
-  document.querySelector(".slides").innerHTML = html;
-  response.map(() => {
-    let dot = document.createElement("div");
-    dot.classList.add("dot");
-    containerDots.appendChild(dot);
+  $(".slides").html(html);
+  response.map((value) => {
+    let dot = $("<div class='dot' data-id=" + value?.id + "></div>");
+    $_containerDots.append(dot);
   });
   handleNextPrevImages(response);
 });
@@ -56,7 +56,17 @@ processDataImages().then((response) => {
 const handleNextPrevImages = (response) => {
   // get all dots
   const dots = containerDots.querySelectorAll("*").forEach((dot, index) => {
-    dot.addEventListener("click", () => {
+    dot.addEventListener("click", (e) => {
+      let id = $(e.currentTarget).data("id");
+      processDataAuthor(id).then((response_author) => {
+        const author = {
+          response_author,
+        };
+        let source = $("#user-template").html();
+        let template = Handlebars.compile(source);
+        let html = template(author);
+        $(".users").html(html);
+      });
       moveDot(index + 1);
     });
   });
@@ -99,16 +109,17 @@ const handleNextPrevImages = (response) => {
     const activeDot = containerDots.querySelector("[data-active]");
     containerDots.children[slideIndex - 1].dataset.active = true;
     activeDot && delete activeDot.dataset.active;
+
   };
   // call first then set active class
   updateImage();
 };
 
-const processDataAuthor = async () => {
+const processDataAuthor = async (id) => {
   try {
     const response = await callAPI(
       "GET",
-      "https://jsonplaceholder.typicode.com/users"
+      `https://jsonplaceholder.typicode.com/users?id=${id}`
     );
     return response;
   } catch (err) {
@@ -116,6 +127,13 @@ const processDataAuthor = async () => {
   }
 };
 
-processDataAuthor().then((response) => {
-  console.log(response);
-});
+ processDataAuthor(id).then((response_author) => {
+   
+   const author = {
+     response_author,
+   };
+   let source = $("#user-template").html();
+   let template = Handlebars.compile(source);
+   let html = template(author);
+   $(".users").html(html);
+ });
