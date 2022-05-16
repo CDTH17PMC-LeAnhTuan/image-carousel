@@ -14,15 +14,7 @@ const init = () => {
     loader.style.display = "none";
     container.style.display = "block";
     setTimeout(() => (container.style.opacity = 1), 50);
-    processDataAuthor(slideIndex).then((response_author) => {
-      const author = {
-        response_author,
-      };
-      let source = $("#user-template").html();
-      let template = Handlebars.compile(source);
-      let html = template(author);
-      $(".users").html(html);
-    });
+    appendHtmlAuthor(slideIndex);
   }, 2000);
 };
 init();
@@ -79,15 +71,7 @@ const handleNextPrevImages = (response) => {
   const dots = containerDots.querySelectorAll("*").forEach((dot, index) => {
     dot.addEventListener("click", (e) => {
       let id = $(e.currentTarget).data("id");
-      processDataAuthor(id).then((response_author) => {
-        const author = {
-          response_author,
-        };
-        let source = $("#user-template").html();
-        let template = Handlebars.compile(source);
-        let html = template(author);
-        $(".users").html(html);
-      });
+      appendHtmlAuthor(id);
       moveDot(index + 1);
     });
   });
@@ -105,6 +89,7 @@ const handleNextPrevImages = (response) => {
     } else if (slideIndex === response.length) {
       slideIndex = 1;
     }
+    appendHtmlAuthor(slideIndex);
     updateImage();
   };
   const nextBtn = document.querySelector(".next");
@@ -117,6 +102,7 @@ const handleNextPrevImages = (response) => {
     } else if (slideIndex === 1) {
       slideIndex = response.length;
     }
+    appendHtmlAuthor(slideIndex);
     updateImage();
   };
   const prevBtn = document.querySelector(".prev");
@@ -136,4 +122,14 @@ const handleNextPrevImages = (response) => {
   updateImage();
 };
 
-
+const appendHtmlAuthor = (id) => {
+  processDataAuthor(id).then((response_author) => {
+    const author = {
+      response_author,
+    };
+    let source = $("#user-template").html();
+    let template = Handlebars.compile(source);
+    let html = template(author);
+    $(".users").html(html);
+  });
+}
