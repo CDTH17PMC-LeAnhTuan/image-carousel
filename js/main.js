@@ -70,6 +70,7 @@ const handleNextPrevImages = (response) => {
       moveDot(index + 1);
     });
   });
+
   // set dot
   const moveDot = (index) => {
     slideIndex = index;
@@ -110,6 +111,7 @@ const handleNextPrevImages = (response) => {
     containerDots.children[slideIndex - 1].dataset.active = true;
     activeDot && delete activeDot.dataset.active;
 
+    
   };
   // call first then set active class
   updateImage();
@@ -126,14 +128,3 @@ const processDataAuthor = async (id) => {
     return err;
   }
 };
-
- processDataAuthor(id).then((response_author) => {
-   
-   const author = {
-     response_author,
-   };
-   let source = $("#user-template").html();
-   let template = Handlebars.compile(source);
-   let html = template(author);
-   $(".users").html(html);
- });
