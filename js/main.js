@@ -14,6 +14,15 @@ const init = () => {
     loader.style.display = "none";
     container.style.display = "block";
     setTimeout(() => (container.style.opacity = 1), 50);
+    processDataAuthor(slideIndex).then((response_author) => {
+      const author = {
+        response_author,
+      };
+      let source = $("#user-template").html();
+      let template = Handlebars.compile(source);
+      let html = template(author);
+      $(".users").html(html);
+    });
   }, 2000);
 };
 init();
@@ -31,6 +40,18 @@ const processDataImages = async () => {
     const response = await callAPI(
       "GET",
       "https://jsonplaceholder.typicode.com/photos?albumId=1"
+    );
+    return response;
+  } catch (err) {
+    return err;
+  }
+};
+
+const processDataAuthor = async (id) => {
+  try {
+    const response = await callAPI(
+      "GET",
+      `https://jsonplaceholder.typicode.com/users?id=${id}`
     );
     return response;
   } catch (err) {
@@ -110,21 +131,9 @@ const handleNextPrevImages = (response) => {
     const activeDot = containerDots.querySelector("[data-active]");
     containerDots.children[slideIndex - 1].dataset.active = true;
     activeDot && delete activeDot.dataset.active;
-
-    
   };
   // call first then set active class
   updateImage();
 };
 
-const processDataAuthor = async (id) => {
-  try {
-    const response = await callAPI(
-      "GET",
-      `https://jsonplaceholder.typicode.com/users?id=${id}`
-    );
-    return response;
-  } catch (err) {
-    return err;
-  }
-};
+
