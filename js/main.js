@@ -15,6 +15,7 @@ const init = () => {
     container.style.display = "block";
     setTimeout(() => (container.style.opacity = 1), 50);
     appendHtmlAuthor(slideIndex);
+    appendHtmlOneImage(slideIndex);
   }, 2000);
 };
 init();
@@ -31,7 +32,7 @@ const processDataImages = async () => {
   try {
     const response = await callAPI(
       "GET",
-      "https://jsonplaceholder.typicode.com/photos?albumId=1"
+      "https://jsonplaceholder.typicode.com/photos?_start=0&_limit=10"
     );
     return response;
   } catch (err) {
@@ -50,6 +51,18 @@ const processDataAuthor = async (id) => {
     return err;
   }
 };
+
+const processDataImagesWithId = async (id) => {
+  try {
+    const response = await callAPI(
+      "GET",
+      `https://jsonplaceholder.typicode.com/photos?_start=0&_limit=10&id=${id}`
+    );
+    return response;
+  } catch (err) {
+    return err;
+  }
+}
 
 processDataImages().then((response) => {
   const images = {
@@ -72,6 +85,7 @@ const handleNextPrevImages = (response) => {
     dot.addEventListener("click", (e) => {
       let id = $(e.currentTarget).data("id");
       appendHtmlAuthor(id);
+      appendHtmlOneImage(id);
       moveDot(index + 1);
     });
   });
@@ -90,6 +104,7 @@ const handleNextPrevImages = (response) => {
       slideIndex = 1;
     }
     appendHtmlAuthor(slideIndex);
+    appendHtmlOneImage(slideIndex);
     updateImage();
   };
   const nextBtn = document.querySelector(".next");
@@ -103,6 +118,7 @@ const handleNextPrevImages = (response) => {
       slideIndex = response.length;
     }
     appendHtmlAuthor(slideIndex);
+    appendHtmlOneImage(slideIndex);
     updateImage();
   };
   const prevBtn = document.querySelector(".prev");
@@ -131,5 +147,17 @@ const appendHtmlAuthor = (id) => {
     let template = Handlebars.compile(source);
     let html = template(author);
     $(".users").html(html);
+  });
+}
+
+const appendHtmlOneImage = (id) => {
+  processDataImagesWithId(id).then((response_img) => {
+    const image = {
+      response_img,
+    };
+    let source = $("#one-image-template").html();
+    let template = Handlebars.compile(source);
+    let html = template(image);
+    $(".popup-content").html(html);
   });
 }

@@ -1,3 +1,6 @@
+$color-white: #f1f1f1;
+$color-black: #000;
+$color-grey: #aaaaaa;
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +10,10 @@ body {
   display: grid;
   place-items: center;
   min-height: 100vh;
+}
+
+a {
+  color: $color-black;
 }
 
 .container-slider {
@@ -52,7 +59,7 @@ body {
 /* Image Slider Next And Previous Buttons */
 .btn-slide {
   position: absolute;
-  background: #f1f1f1;
+  background: $color-white;
   width: 40px;
   height: 40px;
   padding: 10px;
@@ -95,9 +102,9 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 3px solid #f1f1f1;
+  border: 3px solid $color-white;
   margin: 0 5px;
-  background: #f1f1f1;
+  background: $color-white;
   cursor: pointer;
   transition: background-color 500ms ease-in-out;
   &:hover {
@@ -117,4 +124,59 @@ body {
 .underline {
   text-decoration: underline;
   display: inline-block;
+}
+
+.popup-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.3);
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(21, 17, 17, 0.61);
+  display: flex;
+  align-items: center;
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.popup-content {
+  background-color: $color-white;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid $color-grey;
+  width: 50%;
+  a.close {
+    color: $color-grey;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    &:hover {
+      color: $color-black;
+    }
+  }
+  span {
+    &:hover,
+    &:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+  img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: block;
+  }
 }
