@@ -1,0 +1,58 @@
+.jp-default, .holder a.jp-current, .holder a.jp-current:hover, .holder a.jp-disabled, .holder a.jp-disabled:hover {
+  cursor: default;
+  background: none; }
+
+#content {
+  margin: 5% 0; }
+
+#itemContainer {
+  list-style: none;
+  padding: 0;
+  margin: 20px 10px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center; }
+  #itemContainer li {
+    display: inline-block;
+    margin: 5px;
+    zoom: 1;
+    *display: inline; }
+
+a {
+  color: #222;
+  text-decoration: none; }
+  a:visited {
+    color: #222; }
+  a:focus {
+    outline: thin dotted; }
+  a:hover, a:active {
+    outline: 0; }
+
+.holder {
+  margin: 15px 0; }
+  .holder a {
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 5px;
+    color: #333; }
+    .holder a:hover {
+      background-color: #222;
+      color: #fff; }
+    .holder a.jp-previous {
+      margin-right: 15px; }
+    .holder a.jp-next {
+      margin-left: 15px; }
+    .holder a.jp-current, .holder a.jp-current:hover {
+      color: #ff4242;
+      font-weight: bold; }
+    .holder a.jp-disabled, .holder a.jp-disabled:hover {
+      color: #bbb; }
+  .holder span {
+    margin: 0 5px; }
+
+form {
+  float: right;
+  margin-right: 50%;
+  display: none; }
+  form label {
+    margin-right: 5px; }

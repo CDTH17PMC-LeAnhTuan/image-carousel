@@ -4,6 +4,7 @@ const container = document.querySelector(".container-slider");
 const containerDots = document.querySelector(".container-dots");
 const $_containerDots = $(".container-dots");
 const containerThumnail = document.querySelector(".thumbnail-container");
+const form = document.querySelector('.form-pagination');
 
 // init slides
 let slideIndex = 1;
@@ -165,6 +166,38 @@ const appendHtmlOneImage = (id) => {
   });
 }
 
+let dataList = [];
+const FetchData = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/photos?_start=0&_limit=1000')
+  const data = await response.json();
+  dataList = data;
+  console.log(dataList);
+}
+
+const appendDataPagination = () => {
+  let source = $("#pagination").html();
+  let template = Handlebars.compile(source);
+  $("#itemContainer").append(template(dataList));
+}
+
+const pagination = async () => {
+  await FetchData();
+  appendDataPagination();
+  $("div.holder").jPages({
+    containerID: "itemContainer",
+    perPage: 10,
+    minHeight: false
+  });
+  $("select").change(function () {
+    let newPerPage = parseInt($(this).val());
+    $("div.holder").jPages("destroy").jPages({
+      containerID: "itemContainer",
+      perPage: newPerPage,
+      minHeight: false
+    });
+  });
+}
+
 // init when loading first
 const init = async () => {
   await setTimeout(() => {
@@ -172,9 +205,10 @@ const init = async () => {
     loader.style.display = "none";
     container.style.display = "block";
     containerThumnail.style.display = "block";
-    setTimeout(() => (container.style.opacity = 1, containerThumnail.style.opacity = 1), 50);
+    form.style.display = "block";
     appendHtmlAuthor(slideIndex);
     appendHtmlOneImage(slideIndex);
+    pagination();
   }, 2000);
 };
 

@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/spinner.css" />
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -52,23 +53,43 @@
     <div id="popup1" class="popup-container">
         <div class="popup-content"></div>
     </div>
-
     <script id="one-image-template" type="text/x-handlebars-template">
         <a href="#" class="close">&times;</a>
         {{#each response_img}}
             <img src="{{thumbnailUrl}}" class="thumbnail-image"/>
         {{/each}}
     </script>
+
     <div class="thumbnail-container"></div>
     <script id="thumbnail-template" type="text/x-handlebars-template">
         {{#each response}}
             <img src="{{url}}" data-id="{{id}}" class="thumbnail-img-child"/>
         {{/each}}
-    </script> 
+    </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <div id="content" class="defaults">
+        <ul id="itemContainer"></ul>
+        <script id="pagination" type="text/x-handlebars-template">
+            {{#each this }}
+              <li><img src="{{thumbnailUrl}}" alt="image" width="100px" height="100px"></li>
+            {{/each}}
+          </script>
+        <form class="form-pagination">
+            <label>Items per page: </label>
+            <select>
+                <option>10</option>
+                <option>25</option>
+                <option>35</option>
+                <option>45</option>
+                <option>50</option>
+            </select>
+        </form>
+        <div class="holder"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="./js/jPages.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/pagination.js"></script>
 </body>
-
 </html>
