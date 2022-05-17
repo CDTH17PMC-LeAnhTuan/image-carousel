@@ -148,10 +148,9 @@ a {
     display: block; }
 
 .thumbnail-container {
-  display: flex;
   display: none;
   flex-wrap: wrap; }
   .thumbnail-container > img {
     width: 100px;
     height: 100px;
-    padding: 0 10px; }
+    margin: 0 10px; }

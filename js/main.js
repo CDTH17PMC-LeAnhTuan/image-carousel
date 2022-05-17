@@ -30,11 +30,11 @@ const callAPI = (method, url) => {
   });
 };
 
-const processDataImages = async () => {
+const processDataImages = async (limit) => {
   try {
     const response = await callAPI(
       "GET",
-      "https://jsonplaceholder.typicode.com/photos?_start=0&_limit=10"
+      `https://jsonplaceholder.typicode.com/photos?_start=0&_limit=${limit}`
     );
     return response;
   } catch (err) {
@@ -66,7 +66,7 @@ const processDataImagesWithId = async (id) => {
   }
 }
 
-processDataImages().then((response) => {
+processDataImages(10).then((response) => {
   const images = {
     response,
   };
@@ -106,7 +106,7 @@ const handleNextPrevImages = (response) => {
       moveDot(index + 1);
     })
   })
-  
+
   // set dot
   const moveDot = (index) => {
     slideIndex = index;
