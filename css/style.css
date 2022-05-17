@@ -11,12 +11,11 @@
   margin: 20px 10px;
   flex-wrap: wrap;
   display: flex;
-  justify-content: center; }
+  justify-content: space-between; }
   #itemContainer li {
     display: inline-block;
     margin: 5px;
-    zoom: 1;
-    *display: inline; }
+    zoom: 1; }
 
 a {
   color: #222;

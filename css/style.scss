@@ -15,12 +15,11 @@ $color-grey: #bbb;
     margin: 20px 10px;
     flex-wrap: wrap;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     li {
         display: inline-block;
         margin: 5px;
         zoom: 1;
-        *display: inline;
     }
 }
 
