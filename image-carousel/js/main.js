@@ -8,20 +8,6 @@ const containerThumnail = document.querySelector(".thumbnail-container");
 // init slides
 let slideIndex = 1;
 
-// init when loading first
-const init = async () => {
-  await setTimeout(() => {
-    loader.style.opacity = 0;
-    loader.style.display = "none";
-    container.style.display = "block";
-    containerThumnail.style.display = "block";
-    setTimeout(() => (container.style.opacity = 1, containerThumnail.style.opacity = 1), 50);
-    appendHtmlAuthor(slideIndex);
-    appendHtmlOneImage(slideIndex);
-  }, 2000);
-};
-init();
-
 // handle API
 const callAPI = (method, url) => {
   return $.ajax({
@@ -178,3 +164,18 @@ const appendHtmlOneImage = (id) => {
     $(".popup-content").html(html);
   });
 }
+
+// init when loading first
+const init = async () => {
+  await setTimeout(() => {
+    loader.style.opacity = 0;
+    loader.style.display = "none";
+    container.style.display = "block";
+    containerThumnail.style.display = "block";
+    setTimeout(() => (container.style.opacity = 1, containerThumnail.style.opacity = 1), 50);
+    appendHtmlAuthor(slideIndex);
+    appendHtmlOneImage(slideIndex);
+  }, 2000);
+};
+
+init();

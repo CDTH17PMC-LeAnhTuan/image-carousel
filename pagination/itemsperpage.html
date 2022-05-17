@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Pagination with perpages</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div id="container" class="clearfix">
+    <div id="content" class="defaults">
+      <ul id="itemContainer"></ul>
+      <script id="pagination" type="text/x-handlebars-template">
+        {{#each this }}
+          <li><img src="{{url}}" alt="image" width="100px" height="100px"></li>
+        {{/each}}
+      </script>
+      <form>
+        <label>Items per page: </label>
+        <select>
+          <option>10</option>
+          <option>25</option>
+          <option>35</option>
+          <option>45</option>
+          <option>50</option>
+        </select>
+      </form>
+      <div class="holder"></div>
+    </div>
+  </div>
+  <script src="./js/jquery-1.8.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+  <script src="./js/jPages.js"></script>
+  <script src="./js/pagination.js"></script>
+</body>
+
+</html>
