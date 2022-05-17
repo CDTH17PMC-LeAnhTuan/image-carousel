@@ -185,7 +185,7 @@ const pagination = async () => {
   appendDataPagination();
   $("div.holder").jPages({
     containerID: "itemContainer",
-    perPage: 10,
+    perPage: 5,
     minHeight: false
   });
   $("select").change(function () {

@@ -74,17 +74,18 @@
               <li><img src="{{thumbnailUrl}}" alt="image" width="100px" height="100px"></li>
             {{/each}}
           </script>
-        <form class="form-pagination">
-            <label>Items per page: </label>
-            <select>
-                <option>10</option>
-                <option>25</option>
-                <option>35</option>
-                <option>45</option>
-                <option>50</option>
-            </select>
-        </form>
-        <div class="holder"></div>
+        <div class="container-form">
+            <div class="holder"></div>
+            <form class="form-pagination">
+                <label>Items per page: </label>
+                <select>
+                    <option>5</option>
+                    <option>10</option>
+                    <option>25</option>
+                    <option>50</option>
+                </select>
+            </form>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
@@ -92,4 +93,5 @@
     <script src="./js/main.js"></script>
     <script src="./js/pagination.js"></script>
 </body>
+
 </html>
