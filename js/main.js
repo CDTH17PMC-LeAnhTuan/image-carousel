@@ -3,17 +3,19 @@ const loader = document.querySelector(".lds-ellipsis");
 const container = document.querySelector(".container-slider");
 const containerDots = document.querySelector(".container-dots");
 const $_containerDots = $(".container-dots");
+const containerThumnail = document.querySelector(".thumbnail-container");
 
 // init slides
 let slideIndex = 1;
 
 // init when loading first
-const init = () => {
-  setTimeout(() => {
+const init = async () => {
+  await setTimeout(() => {
     loader.style.opacity = 0;
     loader.style.display = "none";
     container.style.display = "block";
-    setTimeout(() => (container.style.opacity = 1), 50);
+    containerThumnail.style.display = "block";
+    setTimeout(() => (container.style.opacity = 1, containerThumnail.style.opacity = 1), 50);
     appendHtmlAuthor(slideIndex);
     appendHtmlOneImage(slideIndex);
   }, 2000);
@@ -69,9 +71,13 @@ processDataImages().then((response) => {
     response,
   };
   let source = $("#image-template").html();
+  let source2 = $("#thumbnail-template").html();
   let template = Handlebars.compile(source);
+  let template2 = Handlebars.compile(source2);
   let html = template(images);
+  let html_thumbnail = template2(images);
   $(".slides").html(html);
+  $(".thumbnail-container").html(html_thumbnail);
   response.map((value) => {
     let dot = $("<div class='dot' data-id=" + value?.id + "></div>");
     $_containerDots.append(dot);
@@ -90,6 +96,17 @@ const handleNextPrevImages = (response) => {
     });
   });
 
+  // get all thumbnail child
+  const thumbnail_child = containerThumnail.querySelectorAll("*").forEach((thumbnail, index) => {
+    thumbnail.style.cursor = "pointer";
+    thumbnail.addEventListener("click", (e) => {
+      let id = $(e.currentTarget).data("id");
+      appendHtmlAuthor(id);
+      appendHtmlOneImage(id);
+      moveDot(index + 1);
+    })
+  })
+  
   // set dot
   const moveDot = (index) => {
     slideIndex = index;

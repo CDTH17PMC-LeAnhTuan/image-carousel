@@ -21,7 +21,7 @@
     <div class="container-slider">
         <script id="image-template" type="text/x-handlebars-template">
             {{#each response}}
-            <img src="{{url}}" data-id="{{id}}"/>
+                <img src="{{url}}" data-id="{{id}}"/>
             {{/each}}
         </script>
         <div class="slides"></div>
@@ -49,16 +49,20 @@
         {{/if}}
     </script>
 
-    <!--popup1-->
     <div id="popup1" class="popup-container">
         <div class="popup-content"></div>
-
     </div>
 
     <script id="one-image-template" type="text/x-handlebars-template">
         <a href="#" class="close">&times;</a>
         {{#each response_img}}
             <img src="{{thumbnailUrl}}" class="thumbnail-image"/>
+        {{/each}}
+    </script>
+    <div class="thumbnail-container"></div>
+    <script id="thumbnail-template" type="text/x-handlebars-template">
+        {{#each response}}
+            <img src="{{url}}" data-id="{{id}}" class="thumbnail-img-child"/>
         {{/each}}
     </script>
 

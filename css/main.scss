@@ -12,7 +12,7 @@ $color-grey: #aaaaaa;
 body {
   display: grid;
   place-items: center;
-  min-height: 100vh;
+  min-height: 70vh;
 }
 
 a {
@@ -118,9 +118,10 @@ a {
 }
 .users {
   @extend .width-height;
-  height: 500px !important;
-  margin: 10px 0;
   text-align: center;
+  .content-user {
+    padding: 40px 0;
+  }
 }
 .underline {
   text-decoration: underline;
@@ -178,5 +179,14 @@ a {
     margin-right: auto;
     width: 50%;
     display: block;
+  }
+}
+.thumbnail-container {
+  display: none;
+  flex-wrap: wrap;
+  > img {
+    width: 100px;
+    height: 100px;
+    padding: 0 10px;
   }
 }

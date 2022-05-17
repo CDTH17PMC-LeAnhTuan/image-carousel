@@ -9,7 +9,7 @@
 body {
   display: grid;
   place-items: center;
-  min-height: 100vh; }
+  min-height: 70vh; }
 
 a {
   color: #000; }
@@ -95,9 +95,9 @@ a {
     background: #202020; }
 
 .users {
-  height: 500px !important;
-  margin: 10px 0;
   text-align: center; }
+  .users .content-user {
+    padding: 40px 0; }
 
 .underline {
   text-decoration: underline;
@@ -146,3 +146,12 @@ a {
     margin-right: auto;
     width: 50%;
     display: block; }
+
+.thumbnail-container {
+  display: flex;
+  display: none;
+  flex-wrap: wrap; }
+  .thumbnail-container > img {
+    width: 100px;
+    height: 100px;
+    padding: 0 10px; }
