@@ -211,5 +211,4 @@ const init = async () => {
     pagination();
   }, 2000);
 };
-
 init();

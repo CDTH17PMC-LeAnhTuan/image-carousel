@@ -10,9 +10,17 @@ $color-grey: #aaaaaa;
   height: 100%;
 }
 body {
-  display: grid;
-  place-items: center;
-  min-height: 70vh;
+    display: flex;
+    place-items: center;
+    min-height: 70vh;
+    width: 1024px;
+    /* background: red; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    margin: auto;
 }
 
 a {
@@ -24,7 +32,7 @@ a {
   position: relative;
   max-width: 100%;
   @extend .width-height;
-  height: 400px !important;
+  height: 600px !important;
   overflow: hidden;
   &:hover {
     > .btn-slide {
@@ -36,6 +44,7 @@ a {
 /* Slider Container which contains images */
 .slides {
   position: relative;
+  margin:auto;
   @extend .width-height;
   img {
     position: absolute;
@@ -121,6 +130,9 @@ a {
   text-align: center;
   .content-user {
     padding: 40px 0;
+    > a {
+      text-decoration: underline;
+    }
   }
 }
 .underline {
@@ -185,10 +197,9 @@ a {
   display: none;
   flex-wrap: wrap;
   > img {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     margin: 0 10px;
-    border-radius: 15px;
-    border: 1px solid black;
+    border-radius: 10px;
   }
 }

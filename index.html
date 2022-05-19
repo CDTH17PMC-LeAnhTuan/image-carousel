@@ -44,7 +44,7 @@
                 <div class="content-user">
                     <b>Photo by - <p class="underline">{{name}}</p></b><br/>
                     Location  - <p class="underline">{{address.city}},  {{address.suite}}, {{address.street}}</p> Colorful trees near a lake. 
-                    <a href="#popup1" style="color: red; font-weight: bold; text-decoration: underline;">Link</a>
+                    <a href="#popup1">Link</a>
                 </div>
             {{/each}}
         {{/if}}
@@ -71,7 +71,7 @@
         <ul id="itemContainer"></ul>
         <script id="pagination" type="text/x-handlebars-template">
             {{#each this }}
-              <li><img src="{{thumbnailUrl}}" alt="image" width="100px" height="100px"></li>
+              <li><img src="{{thumbnailUrl}}" alt="image"></li>
             {{/each}}
           </script>
         <div class="container-form">
