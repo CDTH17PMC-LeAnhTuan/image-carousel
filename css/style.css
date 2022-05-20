@@ -1,11 +1,9 @@
-.jp-default, .holder a.jp-disabled, .holder a.jp-disabled:hover, .holder a.jp-current, .holder a.jp-current:hover {
+.jp-default, .holder a.jp-current, .holder a.jp-current:hover, .holder a.jp-disabled, .holder a.jp-disabled:hover {
   cursor: default;
-  background: none;
-}
+  background: none; }
 
 #content {
-  margin-bottom: 20px;
-}
+  margin-bottom: 20px; }
 
 #itemContainer {
   list-style: none;
@@ -13,75 +11,57 @@
   margin: 20px 10px;
   flex-wrap: wrap;
   display: flex;
-  justify-content: space-between;
-}
-#itemContainer li {
-  display: inline-block;
-  margin: 5px;
-  zoom: 1;
-}
-#itemContainer li > img {
-  width: 50px;
-  height: 50px;
-}
+  justify-content: space-between; }
+  #itemContainer li {
+    display: inline-block;
+    margin: 5px;
+    zoom: 1; }
+    #itemContainer li > img {
+      width: 50px;
+      height: 50px; }
 
 a {
   color: #222;
-  text-decoration: none;
-}
-a:visited {
-  color: #222;
-}
-a:focus {
-  outline: thin dotted;
-}
-a:hover, a:active {
-  outline: 0;
-}
+  text-decoration: none; }
+  a:visited {
+    color: #222; }
+  a:focus {
+    outline: thin dotted; }
+  a:hover, a:active {
+    outline: 0; }
 
 .holder {
-  margin: 15px 0;
-}
-.holder a {
-  font-size: 20px;
-  cursor: pointer;
-  margin: 0 5px;
-  color: #333;
-}
-.holder a:hover {
-  background-color: #222;
-  color: #fff;
-}
-.holder a.jp-previous {
-  margin-right: 15px;
-}
-.holder a.jp-next {
-  margin-left: 15px;
-}
-.holder a.jp-current, .holder a.jp-current:hover {
-  color: #ff4242;
-  font-weight: bold;
-}
-.holder a.jp-disabled, .holder a.jp-disabled:hover {
-  color: #bbb;
-}
-.holder span {
-  margin: 0 5px;
-}
+  margin: 15px 0; }
+  .holder a {
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    color: white; }
+    .holder a:hover {
+      background-color: #222;
+      color: #fff; }
+    .holder a.jp-previous {
+      margin-right: 15px; }
+    .holder a.jp-next {
+      margin-left: 15px; }
+    .holder a.jp-current, .holder a.jp-current:hover {
+      color: #ff4242;
+      font-weight: bold; }
+    .holder a.jp-disabled, .holder a.jp-disabled:hover {
+      color: #bbb; }
+  .holder span {
+    margin: 0 5px; }
 
 .container-form {
   display: grid;
   justify-content: center;
-  font-size: 20px;
-}
+  font-size: 20px; }
 
 form {
   float: right;
-  display: none;
-}
-form label {
-  margin-right: 5px;
-}
-form select {
-  font-size: 18px;
-}
+  display: none; }
+  form label {
+    margin-right: 5px;
+    color: white; }
+  form select {
+    font-size: 18px; }

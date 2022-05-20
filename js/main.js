@@ -97,7 +97,7 @@ const handleNextPrevImages = (response) => {
   // set dot
   const moveDot = (index) => {
     slideIndex = index;
-    updateImage();
+    updateImage(index);
   };
 
   // Next Images
@@ -109,7 +109,7 @@ const handleNextPrevImages = (response) => {
     }
     appendHtmlAuthor(slideIndex);
     appendHtmlOneImage(slideIndex);
-    updateImage();
+    updateImage(slideIndex);
   };
   const nextBtn = document.querySelector(".next");
   nextBtn.onclick = nextSlide;
@@ -123,13 +123,13 @@ const handleNextPrevImages = (response) => {
     }
     appendHtmlAuthor(slideIndex);
     appendHtmlOneImage(slideIndex);
-    updateImage();
+    updateImage(slideIndex);
   };
   const prevBtn = document.querySelector(".prev");
   prevBtn.onclick = prevSlide;
 
   // Update Image when slick next or prev
-  const updateImage = () => {
+  const updateImage = (slideIndex) => {
     const activeSlide = slides.querySelector("[data-active]");
     slides.children[slideIndex - 1].dataset.active = true;
     activeSlide && delete activeSlide.dataset.active;
@@ -139,7 +139,17 @@ const handleNextPrevImages = (response) => {
     activeDot && delete activeDot.dataset.active;
   };
   // call first then set active class
-  updateImage();
+  updateImage(slideIndex);
+
+  const autoPlay = () => {
+    if (slideIndex !== slides.children.length) {
+      ++slideIndex;
+    } else if (slideIndex === slides.children.length) {
+      slideIndex = 1;
+    }
+    updateImage(slideIndex);
+  }
+  setInterval(autoPlay, 3000);
 };
 
 const appendHtmlAuthor = (id) => {
