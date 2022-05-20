@@ -36,7 +36,7 @@ a {
     font-size: 20px;
     cursor: pointer;
     margin: 0 5px;
-    color: white; }
+    color: #fff; }
     .holder a:hover {
       background-color: #222;
       color: #fff; }
@@ -50,7 +50,8 @@ a {
     .holder a.jp-disabled, .holder a.jp-disabled:hover {
       color: #bbb; }
   .holder span {
-    margin: 0 5px; }
+    margin: 0 5px;
+    color: #fff; }
 
 .container-form {
   display: grid;
@@ -62,6 +63,6 @@ form {
   display: none; }
   form label {
     margin-right: 5px;
-    color: white; }
+    color: #fff; }
   form select {
     font-size: 18px; }

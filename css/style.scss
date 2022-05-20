@@ -48,7 +48,7 @@ a {
         font-size: 20px;
         cursor: pointer;
         margin: 0 5px;
-        color: white;
+        color: $color-white;
         &:hover {
             background-color: $color-black;
             color: $color-white;
@@ -73,6 +73,8 @@ a {
     }
     span {
         margin: 0 5px;
+        color:$color-white;
+    
     }
 }
 
@@ -87,7 +89,7 @@ form {
     display: none;
     label {
         margin-right: 5px;
-        color:white;
+        color:$color-white;
     }
     select {
         font-size: 18px;
