@@ -15,14 +15,14 @@ $color-grey: #bbb;
     margin: 20px 10px;
     flex-wrap: wrap;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     li {
         display: inline-block;
         margin: 5px;
         zoom: 1;
         >img {
-            width:50px;
-            height:50px;
+            width: 150px;
+            height:150px;
         }
     }
 }

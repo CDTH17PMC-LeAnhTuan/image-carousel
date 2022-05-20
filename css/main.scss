@@ -13,7 +13,7 @@ body {
   display: flex;
   place-items: center;
   min-height: 70vh;
-  width: 1024px;
+  // width: 1024px;
   background: $color-black;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +33,8 @@ a {
   position: relative;
   max-width: 100%;
   @extend .width-height;
-  height: 600px !important;
+  // height: 600px !important;
+  height: 900px !important;
   overflow: hidden;
   &:hover {
     > .btn-slide {

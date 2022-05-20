@@ -22,7 +22,7 @@
     <div class="container-slider">
         <script id="image-template" type="text/x-handlebars-template">
             {{#each response}}
-                <img src="{{url}}" data-id="{{id}}"/>
+                <img src="{{largeImageURL}}" data-id="{{id}}"/>
             {{/each}}
         </script>
         <div class="slides"></div>
@@ -56,14 +56,14 @@
     <script id="one-image-template" type="text/x-handlebars-template">
         <a href="#" class="close">&times;</a>
         {{#each response_img}}
-            <img src="{{thumbnailUrl}}" class="thumbnail-image"/>
+            <img src="{{largeImageURL}}" class="thumbnail-image"/>
         {{/each}}
     </script>
 
     <div class="thumbnail-container"></div>
     <script id="thumbnail-template" type="text/x-handlebars-template">
         {{#each response}}
-            <img src="{{url}}" data-id="{{id}}" class="thumbnail-img-child"/>
+            <img src="{{largeImageURL}}" data-id="{{id}}" class="thumbnail-img-child"/>
         {{/each}}
     </script>
 
@@ -71,7 +71,7 @@
         <ul id="itemContainer"></ul>
         <script id="pagination" type="text/x-handlebars-template">
             {{#each this }}
-              <li><img src="{{thumbnailUrl}}" alt="image"></li>
+              <li><img src="{{largeImageURL}}" alt="image"></li>
             {{/each}}
           </script>
         <div class="container-form">

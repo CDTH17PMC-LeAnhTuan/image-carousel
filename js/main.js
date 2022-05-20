@@ -21,9 +21,11 @@ const processDataImages = async (limit) => {
   try {
     const response = await callAPI(
       "GET",
-      `https://jsonplaceholder.typicode.com/photos?_start=0&_limit=${limit}`
+      `https://pixabay.com/api/?key=27530360-6f20742ba96654d18ed62d387&category=animals&page=1&per_page=${limit}`
+      // `https://jsonplaceholder.typicode.com/photos?_start=0&_limit=${limit}`
     );
-    return response;
+    // return response;
+    return response.hits;
   } catch (err) {
     return err;
   }
@@ -45,9 +47,11 @@ const processDataImagesWithId = async (id) => {
   try {
     const response = await callAPI(
       "GET",
-      `https://jsonplaceholder.typicode.com/photos?_start=0&_limit=10&id=${id}`
+      `https://pixabay.com/api/?key=27530360-6f20742ba96654d18ed62d387&category=animals&page=1&per_page=15&id=${id}`
+      // `https://jsonplaceholder.typicode.com/photos?_start=0&_limit=10&id=${id}`
     );
-    return response;
+    // return response;
+    return response.hits;
   } catch (err) {
     return err;
   }
@@ -77,7 +81,8 @@ const handleNextPrevImages = (response) => {
   const dots = containerDots.querySelectorAll("*").forEach((dot, index) => {
     dot.addEventListener("click", (e) => {
       let id = $(e.currentTarget).data("id");
-      appendHtmlAuthor(id);
+      // appendHtmlAuthor(id);
+      appendHtmlAuthor(slideIndex);
       appendHtmlOneImage(id);
       moveDot(index + 1);
     });
@@ -88,7 +93,8 @@ const handleNextPrevImages = (response) => {
     thumbnail.style.cursor = "pointer";
     thumbnail.addEventListener("click", (e) => {
       let id = $(e.currentTarget).data("id");
-      appendHtmlAuthor(id);
+      // appendHtmlAuthor(id);
+      appendHtmlAuthor(slideIndex);
       appendHtmlOneImage(id);
       moveDot(index + 1);
     })
@@ -148,6 +154,7 @@ const handleNextPrevImages = (response) => {
       slideIndex = 1;
     }
     updateImage(slideIndex);
+    appendHtmlAuthor(slideIndex);
   }
   setInterval(autoPlay, 3000);
 };
@@ -178,10 +185,10 @@ const appendHtmlOneImage = (id) => {
 
 let dataList = [];
 const FetchData = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/photos?_start=0&_limit=1000')
+  const response = await fetch('https://pixabay.com/api/?key=27530360-6f20742ba96654d18ed62d387&category=animals&page=1&per_page=200')
   const data = await response.json();
-  dataList = data;
-  console.log(dataList);
+  dataList = data.hits;
+  // console.log(dataList);
 }
 
 const appendDataPagination = () => {
