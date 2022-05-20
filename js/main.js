@@ -5,6 +5,8 @@ const containerDots = document.querySelector(".container-dots");
 const $_containerDots = $(".container-dots");
 const containerThumnail = document.querySelector(".thumbnail-container");
 const form = document.querySelector('.form-pagination');
+// make pagination
+let dataList = [];
 
 // init slides
 let slideIndex = 1;
@@ -156,7 +158,7 @@ const handleNextPrevImages = (response) => {
     updateImage(slideIndex);
     appendHtmlAuthor(slideIndex);
   }
-  setInterval(autoPlay, 3000);
+  setInterval(autoPlay, 3500);
 };
 
 const appendHtmlAuthor = (id) => {
@@ -183,7 +185,7 @@ const appendHtmlOneImage = (id) => {
   });
 }
 
-let dataList = [];
+
 const FetchData = async () => {
   const response = await fetch('https://pixabay.com/api/?key=27530360-6f20742ba96654d18ed62d387&category=animals&page=1&per_page=200')
   const data = await response.json();
@@ -207,6 +209,7 @@ const pagination = async () => {
   });
   $("select").change(function () {
     let newPerPage = parseInt($(this).val());
+    $("#itemContainer").css("display","flex");
     $("div.holder").jPages("destroy").jPages({
       containerID: "itemContainer",
       perPage: newPerPage,
@@ -221,7 +224,8 @@ const init = async () => {
     loader.style.opacity = 0;
     loader.style.display = "none";
     container.style.display = "block";
-    containerThumnail.style.display = "block";
+    containerThumnail.style.display = "flex";
+    containerDots.style.opacity = 1;
     form.style.display = "block";
     appendHtmlAuthor(slideIndex);
     appendHtmlOneImage(slideIndex);
