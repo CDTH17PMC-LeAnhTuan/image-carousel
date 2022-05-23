@@ -169,6 +169,6 @@ a {
   .thumbnail-container > img {
     width: 150px;
     height: 150px;
-    margin: 0 10px;
+    margin: 10px;
     border-radius: 10px;
     border: 2px solid white; }
