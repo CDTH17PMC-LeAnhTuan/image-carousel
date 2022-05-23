@@ -59,7 +59,7 @@ const processDataImagesWithId = async (id) => {
   }
 }
 
-processDataImages(10).then((response) => {
+processDataImages(20).then((response) => {
   const images = {
     response,
   };
@@ -105,7 +105,8 @@ const handleNextPrevImages = (response) => {
   // set dot
   const moveDot = (index) => {
     slideIndex = index;
-    updateImage(index);
+    updateImage(slideIndex);
+    appendHtmlAuthor(slideIndex);
   };
 
   // Next Images

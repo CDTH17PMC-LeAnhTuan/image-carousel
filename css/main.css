@@ -86,7 +86,8 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
-  z-index: 10; }
+  z-index: 10;
+  margin-top: 15px; }
 
 /* Sigle Dot style */
 .dot {
@@ -163,8 +164,7 @@ a {
 
 .thumbnail-container {
   display: none;
-  width: 900px;
-  overflow-y: auto;
+  width: 1200px;
   overflow-x: scroll; }
   .thumbnail-container > img {
     width: 150px;
