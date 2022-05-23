@@ -163,9 +163,9 @@ a {
 
 .thumbnail-container {
   display: none;
-  justify-content: center;
   width: 900px;
-  overflow-x: hidden; }
+  overflow-y: auto;
+  overflow-x: scroll; }
   .thumbnail-container > img {
     width: 150px;
     height: 150px;

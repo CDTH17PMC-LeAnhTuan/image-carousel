@@ -209,7 +209,7 @@ const pagination = async () => {
   });
   $("select").change(function () {
     let newPerPage = parseInt($(this).val());
-    $("#itemContainer").css("display","flex");
+    $("#itemContainer").css("display", "flex");
     $("div.holder").jPages("destroy").jPages({
       containerID: "itemContainer",
       perPage: newPerPage,
@@ -227,6 +227,9 @@ const init = async () => {
     containerThumnail.style.display = "flex";
     containerDots.style.opacity = 1;
     form.style.display = "block";
+    let outerContentWidth = $('.thumbnail-container').width();
+    let scrollPosition = outerContentWidth / 2;
+    $('.thumbnail-container').scrollLeft(scrollPosition);
     appendHtmlAuthor(slideIndex);
     appendHtmlOneImage(slideIndex);
     pagination();

@@ -72,14 +72,14 @@ a {
 /* Image Slider Next And Previous Buttons */
 .btn-slide {
   position: absolute;
-  background: rgba(255,255,255,0.65);
+  background: rgba(255, 255, 255, 0.65);
   width: 45px;
   height: 45px;
   padding: 10px;
   // border-radius: 50%;
   opacity: 0;
   // border: 1px solid rgba(34, 34, 34, 0.287);
-  border:none;
+  border: none;
   transition: opacity 300ms ease-in-out;
   cursor: pointer;
   overflow: hidden;
@@ -203,9 +203,9 @@ a {
 .thumbnail-container {
   display: none;
   // flex-wrap: wrap;
-  justify-content: center;
+  // justify-content: center;
   width: 900px;
-  overflow-x: hidden;
+  overflow-x: scroll;
   > img {
     // width: 50px;
     // height: 50px;
